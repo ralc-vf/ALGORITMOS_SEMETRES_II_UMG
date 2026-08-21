@@ -48,7 +48,6 @@ int main()
             case 1:
                cout << "Ingrese Edad:";
                cin >> edad;
-               leerEntero(edad);
                break;
             case 2:
                 cout << "2";

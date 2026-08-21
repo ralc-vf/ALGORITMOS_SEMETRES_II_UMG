@@ -1,92 +1,218 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 
+
+string codigo, cliente, origen, destino, fecha, estado, ubicacionActual;
+int opcionMenu, opcionEstado;
+double peso;
+
+
+/*Prototipos*/
+
+void mostrarMenu();
+void registrarPaquete();
+void limpiarBuffer();
+void mostrarPaquetes();
+void actualizarEstado();
+
+
+
+
 int main(int argc, char const *argv[])
-{
-
-    int oct1 = 0, oct2 = 0, oct3 = 0, oct4 = 0, prefijo = 0, opcMenu = 0;
-    string classIp = " ";
-
+{   
     do{
-        
-        cout << "BIENVENIDO A LA CALCULADORA DE SUBNETING" << endl;
-        cout << "========================================" << endl;
-        cout << "1. Inciar Subneting" << endl;
-        cout << "2. Salir" << endl;
-        cin >> opcMenu;
 
-        switch (opcMenu)
+        mostrarMenu();
+        cin >> opcionMenu;
+        
+
+
+
+        switch (opcionMenu)
         {
         case 1:
-            cout << "Ingrese el Primer Octeto de su IP: " << endl;
-            cin >> oct1;
-
-            cout << "Ingrese el Segundo Octeto de su IP: " << endl;
-            cin >> oct2;
-
-            cout << "Ingrese el Tercer Octeto de su IP: " << endl;
-            cin >> oct3;
-
-            cout << "Ingrese el Cuarto Octeto de su IP: " << endl;
-            cin >> oct4;
-
-            cout << "Ingrese el Prefijo de su IP: " << endl;
-            cin >> prefijo;
-
-            /*Calcular Mascara de SubRed*/
-            switch (prefijo)
-            {
-            case 0:
-                
-                break;
+            registrarPaquete();
+            break;
             
-            default:
-                break;
-            }
+        case 2:
+            mostrarPaquetes();
+            break;
 
-            /* Calcular el Tipo de clase de la IP*/
-            if(oct1 >= 1 && oct1 <= 126)
-            classIp = "A";
-
-            if(oct1 >= 128 && oct1 <= 191)
-            classIp = "B";
-
-            if(oct1 >= 192 && oct1 <= 223)
-            classIp = "C";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        case 3:
+            actualizarEstado();
+            break;
+        
+        case 4:
+            cout << "Hasta Luego";
             break;
         
         default:
+        cout << "Ingrese una Opcion Valida, Hasta Luego.";
+            return 0;
             break;
         }
 
 
 
 
-        
-    }while(opcMenu != 2);
 
-    cout << "Hasta Luego";
 
-    
 
+    }while(opcionMenu != 4);
 
     return 0;
+
 }
+
+
+void mostrarMenu(){
+        cout << "==============================================\n";
+        cout << "|                                            |\n"; 
+        cout << "|                 -Tracking-                 |\n"; 
+        cout << "|                 _Absolut_                  |\n";
+        cout << "|                              by: Alfredo   |\n";
+        cout << "==============================================\n";
+        cout << "|                                            |\n";
+        cout << "|                                            |\n";
+        cout << "|           1. Registrar Paquete             |\n";
+        cout << "|           2. Mostrar Paquetes              |\n";
+        cout << "|           3. Actualizar Estado             |\n";
+        cout << "|           4. Salir                         |\n";
+        cout << "|                                            |\n";
+        cout << "|                                            |\n";
+        cout << "==============================================\n";
+
+}
+
+void registrarPaquete(){
+        cout << "==============================================\n";
+        cout << "| 1. Ingrese el Codigo de Paquete            |\n";
+        cout << "==============================================\n";
+        cin >> codigo;
+
+        limpiarBuffer();
+
+        cout << "==============================================\n";
+        cout << "| 2. Ingrese el nombre del Cliente           |\n";
+        cout << "==============================================\n";
+        cin >> cliente;
+        
+        limpiarBuffer();
+
+        cout << "==============================================\n";
+        cout << "| 3. Ingrese la Direccion de Origen          |\n";
+        cout << "==============================================\n"; 
+        cin >> origen;
+
+        limpiarBuffer();
+
+        cout << "==============================================\n";
+        cout << "| 4. Ingrese la Direccion de Destino         |\n";
+        cout << "==============================================\n";
+        cin >> destino;
+
+        limpiarBuffer();
+        
+        cout << "==============================================\n";
+        cout << "| 5. Ingrese el Peso (2 Decimales /  KG)     |\n";
+        cout << "==============================================\n";
+        cin >> peso;
+
+        limpiarBuffer();
+
+        cout << "==============================================\n";
+        cout << "| 6. Ingrese la Fecha                        |\n";
+        cout << "==============================================\n";
+        cin >> fecha;
+
+        limpiarBuffer();
+
+        cout << "==============================================\n";
+        cout << "| 7. Ingrese el Estado en que se encuentra   |\n";
+        cout << "==============================================\n";
+        cin >> estado;
+
+        limpiarBuffer();
+
+        cout << "==============================================\n";
+        cout << "| 8. Ingrese la Ubicacion Actual             |\n";
+        cout << "==============================================\n";
+        cin >> ubicacionActual;
+
+        limpiarBuffer();
+
+        cout << "==============================================\n";
+        cout << "|       PAQUETE REGISTRADO EXITOSAMENTE      |\n";
+        cout << "==============================================\n";
+        
+
+
+}
+
+void mostrarPaquetes(){
+
+    
+    cout << "==========================================================================\n";
+    cout << "|                                                                        |\n"; 
+    cout << "|                                  -Tracking-                            |\n"; 
+    cout << "|                                  _Absolut_                             |\n";
+    cout << "|                                                                        |\n";
+    cout << "==========================================================================\n";
+    cout << "                                                                        \n";
+    cout << "                                                                        \n";
+    cout << " Codigo: "<<codigo<<"                                                   \n";        
+    cout << " Cliente: "<<cliente<<"                                                 \n";
+    cout << " Origen: "<<origen<<"                                                   \n";
+    cout << " Destino: "<<destino<<"                                                 \n";
+    cout << " Peso: "<<peso<<"                                                       \n";
+    cout << " Fecha: "<<fecha<<"                                                     \n";
+    cout << " Estado: "<<estado<<"                                                   \n";
+    cout << "                                                                        \n";
+    cout << "==========================================================================\n";
+    cout << "                                                                       \n";
+    cout << "   Ubicación Actual:                                                   \n";
+    cout << "   "<< ubicacionActual <<"                                             \n";
+    cout << "                                                                       \n";
+    cout << "==========================================================================\n";
+}
+
+void actualizarEstado(){
+    int opcionEstadoMenu;
+
+    cout << "==============================================\n";
+    cout << "| ACTUALIZAR ESTADO                          |\n";
+    cout << "==============================================\n";
+    cout << "|                                            |\n"; 
+    cout << "| 1. Pendiente de entrega                    |\n";
+    cout << "| 2. En Ruta                                 |\n";
+    cout << "| 3. Entregado                               |\n";
+    cout << "|                                            |\n";
+    cout << "==============================================\n";
+    cin >> opcionEstadoMenu;
+
+    switch (opcionEstadoMenu){
+    case 1:
+        estado = "Pendiente de Entrega";
+        break;
+    case 2:
+        estado = "En Ruta";
+        break;
+    case 3:
+        estado = "Entregado";
+        break;
+    
+    default:
+        cout << "Opcion Invalida, intente de nuevo";
+        break;
+    }
+}
+
+void limpiarBuffer()
+{
+    cin.clear();
+    cin.ignore((numeric_limits<streamsize>::max)(), '\n');
+    cout << "\n\n\n";
+}
+
