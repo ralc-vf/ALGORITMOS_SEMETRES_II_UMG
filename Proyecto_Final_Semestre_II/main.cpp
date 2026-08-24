@@ -27,6 +27,7 @@ int main(int argc, char const *argv[])
         mostrarMenu();
         cin >> opcionMenu;
         
+        limpiarBuffer();
 
 
 
@@ -87,68 +88,60 @@ void mostrarMenu(){
 }
 
 void registrarPaquete(){
-        cout << "==============================================\n";
-        cout << "| 1. Ingrese el Codigo de Paquete            |\n";
-        cout << "==============================================\n";
-        cin >> codigo;
 
-        limpiarBuffer();
-
-        cout << "==============================================\n";
-        cout << "| 2. Ingrese el nombre del Cliente           |\n";
-        cout << "==============================================\n";
-        cin >> cliente;
-        
-        limpiarBuffer();
-
-        cout << "==============================================\n";
-        cout << "| 3. Ingrese la Direccion de Origen          |\n";
-        cout << "==============================================\n"; 
-        cin >> origen;
-
-        limpiarBuffer();
-
-        cout << "==============================================\n";
-        cout << "| 4. Ingrese la Direccion de Destino         |\n";
-        cout << "==============================================\n";
-        cin >> destino;
-
-        limpiarBuffer();
-        
-        cout << "==============================================\n";
-        cout << "| 5. Ingrese el Peso (2 Decimales /  KG)     |\n";
-        cout << "==============================================\n";
-        cin >> peso;
-
-        limpiarBuffer();
-
-        cout << "==============================================\n";
-        cout << "| 6. Ingrese la Fecha                        |\n";
-        cout << "==============================================\n";
-        cin >> fecha;
-
-        limpiarBuffer();
-
-        cout << "==============================================\n";
-        cout << "| 7. Ingrese el Estado en que se encuentra   |\n";
-        cout << "==============================================\n";
-        cin >> estado;
-
-        limpiarBuffer();
-
-        cout << "==============================================\n";
-        cout << "| 8. Ingrese la Ubicacion Actual             |\n";
-        cout << "==============================================\n";
-        cin >> ubicacionActual;
-
-        limpiarBuffer();
-
-        cout << "==============================================\n";
-        cout << "|       PAQUETE REGISTRADO EXITOSAMENTE      |\n";
-        cout << "==============================================\n";
-        
+    cout << "==============================================\n";
+    cout << "| 1. Ingrese el Codigo de Paquete            |\n";
+    cout << "==============================================\n";
+    getline(cin, codigo);
 
 
+    cout << "==============================================\n";
+    cout << "| 2. Ingrese el nombre del Cliente           |\n";
+    cout << "==============================================\n";
+    getline(cin, cliente);
+
+
+    cout << "==============================================\n";
+    cout << "| 3. Ingrese la Direccion de Origen          |\n";
+    cout << "==============================================\n";
+    getline(cin, origen);
+
+
+    cout << "==============================================\n";
+    cout << "| 4. Ingrese la Direccion de Destino         |\n";
+    cout << "==============================================\n";
+    getline(cin, destino);
+
+
+    cout << "==============================================\n";
+    cout << "| 5. Ingrese el Peso (2 Decimales / KG)      |\n";
+    cout << "==============================================\n";
+    cin >> peso;
+
+    limpiarBuffer();
+
+
+    cout << "==============================================\n";
+    cout << "| 6. Ingrese la Fecha                        |\n";
+    cout << "==============================================\n";
+    getline(cin, fecha);
+
+
+    cout << "==============================================\n";
+    cout << "| 7. Ingrese el Estado en que se encuentra   |\n";
+    cout << "==============================================\n";
+    getline(cin, estado);
+
+
+    cout << "==============================================\n";
+    cout << "| 8. Ingrese la Ubicacion Actual             |\n";
+    cout << "==============================================\n";
+    getline(cin, ubicacionActual);
+
+
+    cout << "==============================================\n";
+    cout << "|       PAQUETE REGISTRADO EXITOSAMENTE      |\n";
+    cout << "==============================================\n";
 }
 
 void mostrarPaquetes(){
@@ -213,6 +206,5 @@ void limpiarBuffer()
 {
     cin.clear();
     cin.ignore((numeric_limits<streamsize>::max)(), '\n');
-    cout << "\n\n\n";
 }
 
