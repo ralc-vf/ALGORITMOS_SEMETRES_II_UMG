@@ -9,6 +9,9 @@ void mostrarMatriz(int ventas[][4], int filas);
 int totalFila(int ventas[0][4], int fila);
 int totalColumna(int ventas[][4], int fila);
 void mostrarTotalesFilas(int ventas[][4]);
+void mostrarTotalesColumnas (int ventas[][4]);
+
+
 int ventas[3][4] = {
         {12, 8, 5, 10},
         {15, 6, 7,  9},     
@@ -16,38 +19,42 @@ int ventas[3][4] = {
     };
 
 int main(){
-    
 
+    int opc;
 
-    cout << "Matriz de Ventas" << endl;
+     
+    do{
+        cout << "========= PANADERIA - CONTROL DE VENTAS =========\n";
+        cout << "1. Mostrar Matriz\n";
+        cout << "2. Mostrar totales por día\n";
+        cout << "3. Mostrar totales por producto\n";
+        cout << "4. Salir\n";
+        cout << "Seleccione una opcion: \n";
+        cin >> opc;
 
-    /* Suma de Filas
-        for (int i = 0; i < 3; i++){
-            int totalFila = 0;
+        switch(opc){
+            case 1: 
+                mostrarMatriz(ventas, 3);
+                break;
+            
+            case 2: 
+                mostrarTotalesFilas(ventas);
+                break;
 
-            for(int j = 0; j < 4; j++){
-                totalFila = totalFila + ventas[i][j];
-            }
-            cout << "Total del Dia " << i + 1 << ": " << totalFila << endl;
+            case 3: 
+                mostrarTotalesColumnas(ventas);
+                break;
+
+            case 4:
+                cout << "Saliendo del Sistema =)";
+                break;
+
+            default: 
+                cout << "Opcion Incorrecta.";
+                break;
         }
-    */
-
-    /* Suma de Productos
-    for (int j = 0; j < 4; j++){
-        int totalColumna = 0;
-
-        for(int i = 0; i < 3; i++){
-            totalColumna = totalColumna + ventas[i][j];
-        }
-
-        cout << "Total del Producto " << j + 1 << ": " << totalColumna << endl;
-    }
+    }while(opc != 4);
     
-    
-    */
-
-    mostrarMatriz(ventas, 3);
-    cout << totalColumna(ventas, 1);    
 
     return 0;
 }
@@ -72,16 +79,15 @@ int totalFila(int ventas[][4], int fila){
     return total;
 }
 
-int totalColumna(int ventas[][4], int columna){
-    int totalColumna = 0;
-    for (int j = 0; j < 4; j++){
 
-        for(int i = 0; i < 3; i++){
-            totalColumna = totalColumna + ventas[i][columna];
-        }
+int totalColumna(int ventas[][4], int columna){
+    int total = 0;
+
+    for(int i = 0; i < 3; i++){
+        total += ventas[i][columna];
     }
 
-    return totalColumna;
+    return total;
 }
 
 void mostrarTotalesFilas(int ventas[][4]){
@@ -92,7 +98,7 @@ void mostrarTotalesFilas(int ventas[][4]){
 
 void mostrarTotalesColumnas(int ventas[][4]){
     for(int j = 0; j < 4; j++){
-        cout << "El total de la Columna " << j+1 << " es: " << totalColumna(ventas, 1);
+        cout << "El Total de la Columna " << j + 1 << " es: " << totalColumna(ventas, j) << endl;
     }
 }
 
