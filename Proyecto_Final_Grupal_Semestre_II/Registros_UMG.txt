@@ -1,0 +1,30 @@
+- REGISTROS DE PRODUCTO -
+ID: 1
+Nombre: 1
+Peso: 1
+Stock: 1
+Precio Unitario: 1
+
+
+
+
+- REGISTROS DE COMPRAS -
+ID: 1
+Fecha: 1
+Cantidad: 1
+Precio unitario: 1
+Total: 1
+Producto: 1
+
+
+
+
+- REGISTRO DE VENTAS -
+ID: 1
+Fecha: 1
+Cantidad: 1
+Precio unitario: 1
+Total: 1
+Producto: 1
+
+

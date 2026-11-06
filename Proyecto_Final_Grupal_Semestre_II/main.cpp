@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <limits>
+#include <fstream>
 
 using namespace std;
 
@@ -49,6 +49,12 @@ void crearProducto();
 void buscarVenta();
 void buscarCompra();
 void buscarProducto();
+
+void imprimirProductos();
+void imprimirVentas();
+void imprimirCompras();
+
+void generarArchivo();
     
 
 
@@ -65,7 +71,7 @@ int main (){
         cin >> opcion;
         switch(opcion){
             case 1:
-                mostrarMenuVentas();
+                mostrarMenuProducto();
             break;
 
             case 2:
@@ -73,14 +79,16 @@ int main (){
             break;
 
             case 3:
-                mostrarMenuProducto();
+                mostrarMenuVentas();
             break;
+
+            case 4:
+                generarArchivo();
+            break;
+
         }
     
-        
-
-
-    }while(opcion != 4);
+    }while(opcion != 5);
     cout << "Hasta Pronto. ";
 
     return 0;
@@ -91,13 +99,16 @@ void mostrarMenuInicial () {
     cout << "|                                       |" << endl;
     cout << "|          SuperMarket --- UMG          |" << endl;
     cout << "|                                       |" << endl;
-    cout << "|  1 - Ventas                          |" << endl;
-    cout << "|  2 - Compra                          |" << endl;
-    cout << "|  3 - Productos                       |" << endl;
-    cout << "|  4 - Salir                           |" << endl;
+    cout << "|  1 - Productos                        |" << endl;
+    cout << "|  2 - Compra                           |" << endl;
+    cout << "|  3 - Ventas                           |" << endl;
+    cout << "|  4 - Generar Archivo txt              |" << endl;
+    cout << "|  5 - Salir                            |" << endl;
     cout << "|                                       |" << endl;
     cout << "+---------------------------------------+" << endl;
 }
+
+
 
 void mostrarMenuVentas() {
     int opc = 0;
@@ -106,9 +117,10 @@ void mostrarMenuVentas() {
     cout << "|                                       |" << endl;
     cout << "|          SuperMarket --- UMG          |" << endl;
     cout << "|                                       |" << endl;
-    cout << "|  1 - Crear Venta                     |" << endl;
-    cout << "|  2 - Buscar Venta                    |" << endl;
-    cout << "|  3 - Regresar                        |" << endl;
+    cout << "|  1 - Crear Venta                      |" << endl;
+    cout << "|  2 - Buscar Venta                     |" << endl;
+    cout << "|  3 - Imprimir Registros               |" << endl;
+    cout << "|  4 - Regresar                         |" << endl;
     cout << "|                                       |" << endl;
     cout << "+---------------------------------------+" << endl;
     
@@ -122,6 +134,9 @@ void mostrarMenuVentas() {
             buscarVenta();
         break;
         case 3:
+            imprimirVentas();
+        break;
+        case 4:
             return;
         break;
     }
@@ -134,9 +149,10 @@ void mostrarMenuCompra() {
     cout << "|                                       |" << endl;
     cout << "|          SuperMarket --- UMG          |" << endl;
     cout << "|                                       |" << endl;
-    cout << "|  1 - Crear Compra                    |" << endl;
-    cout << "|  2 - Buscar Compra                   |" << endl;
-    cout << "|  3 - Regresar                        |" << endl;
+    cout << "|  1 - Crear Compra                     |" << endl;
+    cout << "|  2 - Buscar Compra                    |" << endl;
+    cout << "|  3 - Imprimir Registros               |" << endl;
+    cout << "|  4 - Regresar                         |" << endl;
     cout << "|                                       |" << endl;
     cout << "+---------------------------------------+" << endl;
 
@@ -151,6 +167,9 @@ void mostrarMenuCompra() {
             buscarCompra();
         break;
         case 3:
+            imprimirCompras();
+        break;
+        case 4:
             return;
         break;
     }
@@ -163,9 +182,10 @@ void mostrarMenuProducto() {
     cout << "|                                       |" << endl;
     cout << "|          SuperMarket --- UMG          |" << endl;
     cout << "|                                       |" << endl;
-    cout << "|  1 - Crear Producto                  |" << endl;
-    cout << "|  2 - Buscar Producto                 |" << endl;
-    cout << "|  3 - Regresar                        |" << endl;
+    cout << "|  1 - Crear Producto                   |" << endl;
+    cout << "|  2 - Buscar Producto                  |" << endl;
+    cout << "|  3 - Imprimir Registros               |" << endl;
+    cout << "|  4 - Regresar                         |" << endl;
     cout << "|                                       |" << endl;
     cout << "+---------------------------------------+" << endl;
 
@@ -180,6 +200,9 @@ void mostrarMenuProducto() {
             buscarProducto();
         break;
         case 3:
+            imprimirProductos();
+        break;
+        case 4:
             return;
         break;
     }
@@ -408,8 +431,105 @@ void buscarProducto(){
 
 }
 
+void imprimirProductos(){
+    for(int i = 0; i < numeroDeProductos; i++){
+        cout << "ID: " << producto[i].id << endl;
+        cout << "Nombre: " << producto[i].nombreProducto << endl;
+        cout << "Peso: " << producto[i].peso << endl;
+        cout << "Stock: " << producto[i].stock << endl;
+        cout << "Precio Unitario: " << producto[i].precioUnitario << endl; 
+
+        "\n";
+        "\n";
+    }
+}
+
+void imprimirVentas(){
+    for(int i = 0; i < numeroDeVentas; i++){
+        cout << "ID: " << venta[i].Id << endl;
+        cout << "Fecha: " << venta[i].fecha << endl;
+        cout << "Cantidad: " << venta[i].cantidad << endl;
+        cout << "Precio unitario: " << venta[i].precioUnitario << endl;
+        cout << "Total: " << venta[i].total << endl;
+        cout << "Producto: " << venta[i].nombreProducto << endl;
+
+        "\n";
+        "\n";
+        
+    }
+}
+
+void imprimirCompras(){
+    for(int i = 0; i < numeroDeCompras; i++){
+        cout << "ID: " << compra[i].Id << endl;
+        cout << "Fecha: " << compra[i].fecha << endl;
+        cout << "Cantidad: " << compra[i].cantidad << endl;
+        cout << "Precio unitario: " << compra[i].precioUnitario << endl;
+        cout << "Total: " << compra[i].total << endl;
+        cout << "Producto: " << compra[i].nombreProducto << endl;
+
+        "\n";
+        "\n";
+    }
+}
 
 
+void generarArchivo() {
+    ofstream archivoSalida("Registros_UMG.txt");
+
+    if(archivoSalida.is_open()){
+
+            archivoSalida << "- REGISTROS DE PRODUCTO -" << endl;
+        
+        for(int i = 0; i < numeroDeProductos; i++){
+            archivoSalida << "ID: " << producto[i].id << endl;
+            archivoSalida << "Nombre: " << producto[i].nombreProducto << endl;
+            archivoSalida << "Peso: " << producto[i].peso << endl;
+            archivoSalida << "Stock: " << producto[i].stock << endl;
+            archivoSalida << "Precio Unitario: " << producto[i].precioUnitario << endl; 
+
+            archivoSalida << "\n";
+            archivoSalida << "\n";
+        }
+
+        archivoSalida << "\n\n";
+
+        archivoSalida << "- REGISTROS DE COMPRAS -" << endl;
+    
+        for(int i = 0; i < numeroDeCompras; i++){
+            archivoSalida << "ID: " << compra[i].Id << endl;
+            archivoSalida << "Fecha: " << compra[i].fecha << endl;
+            archivoSalida << "Cantidad: " << compra[i].cantidad << endl;
+            archivoSalida << "Precio unitario: " << compra[i].precioUnitario << endl;
+            archivoSalida << "Total: " << compra[i].total << endl;
+            archivoSalida << "Producto: " << compra[i].nombreProducto << endl;
+
+            archivoSalida << "\n";
+            archivoSalida << "\n";
+        }
+
+        archivoSalida << "\n\n";
+
+        archivoSalida << "- REGISTRO DE VENTAS -" << endl;
+
+        for(int i = 0; i < numeroDeVentas; i++){
+            archivoSalida << "ID: " << venta[i].Id << endl;
+            archivoSalida << "Fecha: " << venta[i].fecha << endl;
+            archivoSalida << "Cantidad: " << venta[i].cantidad << endl;
+            archivoSalida << "Precio unitario: " << venta[i].precioUnitario << endl;
+            archivoSalida << "Total: " << venta[i].total << endl;
+            archivoSalida << "Producto: " << venta[i].nombreProducto << endl;
+
+            archivoSalida << "\n";
+            archivoSalida << "\n";
+            
+        }
+
+        cout << "Archivo creado Exitosamente" << endl ;
+        cout << "\n";
 
 
-
+        archivoSalida.close();
+            
+    }
+}
